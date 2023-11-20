@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/table_page.css' %}">
+</head>
+<body>
+    
+    <h1>Издание учебной, учебно-методической и научной литературы</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Название проекта</th>
+                <th>Номер проекта</th>
+                <th>Годы выполнения</th>
+                <th>Роль</th>
+                <th>Руководитель проекта</th>
+                <th>Копия контракта</th>
+                <th>Баллы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ table.title_of_the_project }}</td>
+                <td>{{ table.number_of_the_project }}</td>
+                <td>{{ table.years_of_completion }}</td>
+                <td>{{ table.get_role_in_the_project_display }}</td>
+                <td>{{ table.director_of_the_project }}</td>
+                <td><a href="{{ table.copy_of_the_contract.url }}" target="_blank">Скачать</a></td>
+                <td>{{ table.points }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'export_data_to_word3' %}" class="btn">Export Data to Word</a>
+    <a href="{% url 'kpi' %}" class="back">Назад</a>
+    <a class="btn btn-default" href="{% url 'edit_form3' pk=table.pk %}">Edit</a>
+</body>
+</html>

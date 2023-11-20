@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    <h1>Welcome {{ user.username }}!</h1>
+
+    {% if user_info %}
+
+        <img style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid #007bff;" src="{{ user_info.avatar.url }}" alt="Avatar">
+
+        <p>Name: {{ user_info.name }}</p>
+        <p>Surname: {{ user_info.surname }}</p>
+        <p>Degree: {{ user_info.degree }}</p>
+        <p>Position: {{ user_info.position }}</p>
+        <p>School: {{ user_info.school }}</p>
+        
+    {% else %}
+
+        <p>User not found</p>
+        
+    {% endif %}
+    <p><a class="btn" href="{% url 'logout' %}">Logout</a></p>
+    <p><a class="btn" href="{% url 'home' %}">Back</a></p>
+
+</body>
+</html>

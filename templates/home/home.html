@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="all">
+        <div class="head">
+            <a href="{% url 'profile' %}" class="btn">Профиль</a>
+        </div>
+        <h1>{{ user.username }}</h1>
+
+        {% if user_info %}
+
+            <img style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid #007bff;" src="{{ user_info.avatar.url }}" alt="Avatar">
+
+            <p>Name: {{ user_info.name }}</p>
+            <p>Surname: {{ user_info.surname }}</p>
+            <p>Degree: {{ user_info.degree }}</p>
+            <p>Position: {{ user_info.position }}</p>
+            <p>School: {{ user_info.school }}</p>
+        
+        {% else %}
+
+            <p>User not found</p>
+        
+        {% endif %}
+        <p><a class="btn" href="{% url 'logout' %}">Logout</a></p>
+
+        <h1><a href="{% url 'kpi' %}">Добавить показатель KPI</a></h1>
+        
+        {% block content %}
+        <h1>Публикации в рецензируемых журналах</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Имя автора</th>
+                    <th>Фамилия автора</th>
+                    <th>Название</th>
+                    <th>Название журнала</th>
+                    <th>Год публикации</th>
+                    <th>Ссылка на файл</th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for table in tables %}
+                <tr>
+                    <td>{{ table.name }}</td>
+                    <td>{{ table.surname }}</td>
+                    <td>{{ table.title_of_the_article }}</td>
+                    <td>{{ table.name_of_the_magazine }}</td>
+                    <td>{{ table.year_of_publication }}</td>
+                    <td><a href="{{ table.uploaded_file.url }}" target="_blank">Скачать</a></td>
+                    <td>{{ table.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        
+        <h1>Издание учебной, учебно-методической и научной литературы</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Название монографии</th>
+                    <th>Год издательства</th>
+                    <th>Название издательства</th>
+                    <th>Количество печатных листов</th>
+                    <th>Ссылка на файл</th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for table in tables2 %}
+                <tr>
+                    <td>{{ table.title_of_the_monograph }}</td>
+                    <td>{{ table.year_of_publication }}</td>
+                    <td>{{ table.name_of_publication }}</td>
+                    <td>{{ table.number_of_printed_sheets }}</td>
+                    <td><a href="{{ table.uploaded_monography.url }}" target="_blank">Скачать</a></td>
+                    <td>{{ table.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+  
+        <h1>Выполнение научных исследований</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Название проекта</th>
+                    <th>Номер проекта</th>
+                    <th>Годы выполнения</th>
+                    <th>Роль</th>
+                    <th>Руководитель проекта</th>
+                    <th>Копия контракта</th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for table in tables3 %}
+                <tr>
+                    <td>{{ table.title_of_the_project }}</td>
+                    <td>{{ table.number_of_the_project }}</td>
+                    <td>{{ table.years_of_completion }}</td>
+                    <td>{{ table.get_role_in_the_project_display }}</td>
+                    <td>{{ table.director_of_the_project }}</td>
+                    <td><a href="{{ table.copy_of_the_contract.url }}" target="_blank">Скачать</a></td>
+                    <td>{{ table.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h1>Очное (в том числе онлайн) участие в научных мероприятиях (конференции, форумы, саммиты) с докладом (в том числе с их публикацией) по приоритетным направлениям AlmaU (по обязательному согласованию с Деканом и/или ИРУ</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Название мероприятия</th>
+                    <th>Дата проведения мероприятия</th>
+                    <th>Формат проведения мероприятия</th>
+                    <th>Страна проведения мероприятия</th>
+                    <th>Организация(и), проводившая(ие) мероприятие</th>
+                    <th>Место проведения</th>
+                    <th>Программа мероприятия</th>
+                    <th>Название отчета</th>
+                    <th>Копия отчета</th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for table in tables4 %}
+                <tr>
+                    <td>{{ table.event_title }}</td>
+                    <td>{{ table.event_date }}</td>
+                    <td>{{ table.format_of_the_event }}</td>
+                    <td>{{ table.country }}</td>
+                    <td>{{ table.organisations_holding_event }}</td>
+                    <td>{{ table.location }}</td>
+                    <td><a href="{{ table.event_program.url }}" target="_blank">Скачать</a></td>
+                    <td>{{ table.title_of_the_report }}</td>                
+                    <td><a href="{{ table.copy_of_the_report.url }}" target="_blank">Скачать</a></td>
+                    <td>{{ table.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h1>Руководство докторскими диссертациями (PhD)</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Имя докторанта</th>
+                    <th>Фамилия докторанта</th>
+                    <th>Университет обучения докторанта</th>
+                    <th>Факультет/школа докторанта</th>
+                    <th>Год поступления</th>
+                    <th>Год окончания</th>
+                    <th>Тема диссертации докторанта</th>
+                    <th>Решение ученого совета о научном руководстве </th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for table in tables5 %}
+                <tr>
+                    <td>{{ table.name_of_the_doctoral_student }}</td>
+                    <td>{{ table.surname_of_the_doctoral_student }}</td>
+                    <td>{{ table.university_of_doctoral_studies }}</td>
+                    <td>{{ table.faculty_of_doctoral_student }}</td>
+                    <td>{{ table.year_of_the_beginning_of_studies }}</td>
+                    <td>{{ table.year_of_graduation }}</td>
+                    <td>{{ table.topic_of_the_dissertation }}</td>
+                    <td><a href="{{ table.decision_of_the_academic_council_on_scientific_guidance.url }}" target="_blank">Скачать</a></td>
+                    <td>{{ table.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h1>Присвоение ученой степени докторантам AlmaU под руководством научного руководителя</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Имя докторанта</th>
+                    <th>Фамилия докторанта</th>
+                    <th>Школа</th>
+                    <th>Тема диссертации</th>
+                    <th>Год присуждения</th>
+                    <th>Решение уполномоченного органа о присвоении ученой степени </th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for table in tables6 %}
+                <tr>
+                    <td>{{ table.name_of_the_doctoral_student }}</td>
+                    <td>{{ table.surname_of_the_doctoral_student }}</td>
+                    <td>{{ table.school }}</td>
+                    <td>{{ table.topic_of_the_dissertation }}</td>
+                    <td>{{ table.year_of_award }}</td>
+                    <td><a href="{{ table.decision_of_the_authorized_body_on_awarding_an_academic_degree.url }}" target="_blank">Скачать</a></td>
+                    <td>{{ table.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h1>Получение в течение учебного года ученой степени/ученого звания/, званий в области искусства, спорта</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Решение уполномоченного органа о присвоении ученой степени/ученого звания/, званий в области искусства, спорта </th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for table in tables7 %}
+                <tr>
+                    <td><a href="{{ table.decision_of_the_authorized_body_on_awarding_an_academic_degree_in_the_field_of_art_or_sports.url }}" target="_blank">Скачать</a></td>
+                    <td>{{ table.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h1>Научное руководство исследовательской лабораторией, Центром</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Решение Школы или руководства AlmaU (проректор/ректор) о научном руководстве лабораторией, Центром</th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for table in tables8 %}
+                <tr>
+                    <td><a href="{{ table.decision_of_the_AlmaU_School_or_management_on_the_scientific_management_of_the_laboratory_or_center.url }}" target="_blank">Скачать</a></td>
+                    <td>{{ table.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h1>Оформленные охранные документы (патент)</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Название патента </th>
+                    <th>Год получения </th>
+                    <th>Номер патента </th>
+                    <th>Копия охранного документа </th>
+                    <th>Объект, на который получен охранный документ (должен быть аффилирован с AlmaU)</th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for table in tables9 %}
+                <tr>
+                    <td>{{ table.name_of_the_patent }}</td>
+                    <td>{{ table.year_of_receipt }}</td>
+                    <td>{{ table.number_of_the_patent }}</td>
+                    <td><a href="{{ table.copy_of_the_security_document.url }}" target="_blank">Скачать</a></td>
+                    <td>{{ table.the_object_for_which_the_security_document_was_received }}</td>
+                    <td>{{ table.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endblock %}
+        </div>
+</body>
+</html>

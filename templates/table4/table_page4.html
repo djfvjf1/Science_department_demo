@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (head content) ... -->
+    <link rel="stylesheet" href="{% static 'css/table_page.css' %}">
+</head>
+<body>
+    <h1>Очное (в том числе онлайн) участие в научных мероприятиях (конференции, форумы, саммиты) с докладом (в том числе с их публикацией) по приоритетным направлениям AlmaU (по обязательному согласованию с Деканом и/или ИРУ
+    </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Название мероприятия</th>
+                <th>Дата проведения мероприятия</th>
+                <th>Формат проведения мероприятия</th>
+                <th>Страна проведения мероприятия</th>
+                <th>Организация(и), проводившая(ие) мероприятие</th>
+                <th>Место проведения</th>
+                <th>Программа мероприятия</th>
+                <th>Название отчета</th>
+                <th>Копия отчета</th>
+                <th>Баллы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ table.event_title }}</td>
+                <td>{{ table.event_date }}</td>
+                <td>{{ table.format_of_the_event }}</td>
+                <td>{{ table.country }}</td>
+                <td>{{ table.organisations_holding_event }}</td>
+                <td>{{ table.location }}</td>
+                <td><a href="{{ table.event_program.url }}" target="_blank">Скачать</a></td>
+                <td>{{ table.title_of_the_report }}</td>                
+                <td><a href="{{ table.copy_of_the_report.url }}" target="_blank">Скачать</a></td>
+                <td>{{ table.points }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'export_data_to_word2' %}" class="btn">Export Data to Word</a>
+    <a href="{% url 'kpi' %}" class="back">Назад</a>
+    <a class="btn btn-default" href="{% url 'edit_form4' pk=table.pk %}">Edit</a>
+   
+</body>
+</html>

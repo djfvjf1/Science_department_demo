@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (head content) ... -->
+    <link rel="stylesheet" href="{% static 'css/table_page.css' %}">
+</head>
+<body>
+    <h1>Издание учебной, учебно-методической и научной литературы</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Название монографии</th>
+                <th>Год издательства</th>
+                <th>Название издательства</th>
+                <th>Количество печатных листов</th>
+                <th>Ссылка на файл</th>
+                <th>Баллы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ table.title_of_the_monograph }}</td>
+                <td>{{ table.year_of_publication }}</td>
+                <td>{{ table.name_of_publication }}</td>
+                <td>{{ table.number_of_printed_sheets }}</td>
+                <td><a href="{{ table.uploaded_monography.url }}" target="_blank">Скачать</a></td>
+                <td>{{ table.points }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'export_data_to_word2' %}" class="btn">Export Data to Word</a>
+    <a href="{% url 'kpi' %}" class="back">Назад</a>
+    <a class="btn btn-default" href="{% url 'edit_form2' pk=table.pk %}">Edit</a>
+   
+</body>
+</html>

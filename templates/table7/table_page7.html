@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (head content) ... -->
+    <link rel="stylesheet" href="{% static 'css/table_page.css' %}">
+</head>
+<body>
+    <h1>Получение в течение учебного года ученой степени/ученого звания/, званий в области искусства, спорта</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Решение уполномоченного органа о присвоении ученой степени/ученого звания/, званий в области искусства, спорта </th>
+                <th>Баллы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="{{ table.decision_of_the_authorized_body_on_awarding_an_academic_degree_in_the_field_of_art_or_sports.url }}" target="_blank">Скачать</a></td>
+                <td>{{ table.points }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'export_data_to_word2' %}" class="btn">Export Data to Word</a>
+    <a href="{% url 'kpi' %}" class="back">Назад</a>
+    <a class="btn btn-default" href="{% url 'edit_form6' pk=table.pk %}">Edit</a>
+    
+   
+</body>
+</html>

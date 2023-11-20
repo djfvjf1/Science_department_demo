@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (head content) ... -->
+    <link rel="stylesheet" href="{% static 'css/table_page.css' %}">
+</head>
+<body>
+    <h1>Руководство докторскими диссертациями (PhD)</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Имя докторанта</th>
+                <th>Фамилия докторанта</th>
+                <th>Университет обучения докторанта</th>
+                <th>Факультет/школа докторанта</th>
+                <th>Год поступления</th>
+                <th>Год окончания</th>
+                <th>Тема диссертации докторанта</th>
+                <th>Решение ученого совета о научном руководстве </th>
+                <th>Баллы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ table.name_of_the_doctoral_student }}</td>
+                <td>{{ table.surname_of_the_doctoral_student }}</td>
+                <td>{{ table.university_of_doctoral_studies }}</td>
+                <td>{{ table.faculty_of_doctoral_student }}</td>
+                <td>{{ table.year_of_the_beginning_of_studies }}</td>
+                <td>{{ table.year_of_graduation }}</td>
+                <td>{{ table.topic_of_the_dissertation }}</td>
+                <td><a href="{{ table.decision_of_the_academic_council_on_scientific_guidance.url }}" target="_blank">Скачать</a></td>
+                <td>{{ table.points }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'export_data_to_word2' %}" class="btn">Export Data to Word</a>
+    <a href="{% url 'kpi' %}" class="back">Назад</a>
+    <a class="btn btn-default" href="{% url 'edit_form5' pk=table.pk %}">Edit</a>
+    
+   
+</body>
+</html>

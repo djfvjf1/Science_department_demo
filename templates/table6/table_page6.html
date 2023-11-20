@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (head content) ... -->
+    <link rel="stylesheet" href="{% static 'css/table_page.css' %}">
+</head>
+<body>
+    <h1>Присвоение ученой степени докторантам AlmaU под руководством научного руководителя</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Имя докторанта</th>
+                <th>Фамилия докторанта</th>
+                <th>Школа</th>
+                <th>Тема диссертации</th>
+                <th>Год присуждения</th>
+                <th>Решение уполномоченного органа о присвоении ученой степени </th>
+                <th>Баллы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ table.name_of_the_doctoral_student }}</td>
+                <td>{{ table.surname_of_the_doctoral_student }}</td>
+                <td>{{ table.school }}</td>
+                <td>{{ table.topic_of_the_dissertation }}</td>
+                <td>{{ table.year_of_award }}</td>
+                <td><a href="{{ table.decision_of_the_authorized_body_on_awarding_an_academic_degree.url }}" target="_blank">Скачать</a></td>
+                <td>{{ table.points }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'export_data_to_word2' %}" class="btn">Export Data to Word</a>
+    <a href="{% url 'kpi' %}" class="back">Назад</a>
+    <a class="btn btn-default" href="{% url 'edit_form6' pk=table.pk %}">Edit</a>
+    
+   
+</body>
+</html>

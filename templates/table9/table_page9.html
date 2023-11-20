@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (head content) ... -->
+    <link rel="stylesheet" href="{% static 'css/table_page.css' %}">
+</head>
+<body>
+    <h1>Оформленные охранные документы (патент)</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Название патента </th>
+                <th>Год получения </th>
+                <th>Номер патента </th>
+                <th>Копия охранного документа </th>
+                <th>Объект, на который получен охранный документ (должен быть аффилирован с AlmaU)</th>
+                <th>Баллы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ table.name_of_the_patent }}</td>
+                <td>{{ table.year_of_receipt }}</td>
+                <td>{{ table.number_of_the_patent }}</td>
+                <td><a href="{{ table.copy_of_the_security_document.url }}" target="_blank">Скачать</a></td>
+                <td>{{ table.the_object_for_which_the_security_document_was_received }}</td>
+                <td>{{ table.points }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'export_data_to_word2' %}" class="btn">Export Data to Word</a>
+    <a href="{% url 'kpi' %}" class="back">Назад</a>
+    <a class="btn btn-default" href="{% url 'edit_form9' pk=table.pk %}">Edit</a>
+    
+   
+</body>
+</html>

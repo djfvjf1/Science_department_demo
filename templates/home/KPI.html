@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Показатели KPI</h1>
+        <a href="{% url 'home' %}" class="back">Назад</a>
+    </header>
+    <div class="all">
+        <h2>Публикации в рецензируемых журналах</h2>
+        <a href="{% url 'create_table' %}" class="btn">Показатель KPI 1</a>
+        <h2>Издание учебной, учебно-методической и научной литературы</h2>
+        <a href="{% url 'create_table2' %}" class="btn">Показатель KPI 2</a>
+        <h2>Выполнение научных исследований</h2>
+        <a href="{% url 'create_table3' %}" class="btn">Показатель KPI 3</a>
+        <h2>Очное (в том числе онлайн) участие в научных мероприятиях (конференции, форумы, саммиты) с докладом (в том числе с их публикацией) по приоритетным направлениям AlmaU и (или) их организация, проводимые в Казахстане и/или зарубежных странах </h2>
+        <a href="{% url 'create_table4' %}" class="btn">Показатель KPI 4</a>
+        <h2>Руководство докторскими диссертациями (PhD)</h2>
+        <a href="{% url 'create_table5' %}" class="btn">Показатель KPI 5</a>
+        <h2>Присвоение ученой степени докторантам AlmaU под руководством научного руководителя</h2>
+        <a href="{% url 'create_table6' %}" class="btn">Показатель KPI 6</a>
+        <h2>Получение в течение учебного года ученой степени/ученого звания/, званий в области искусства, спорта</h2>
+        <a href="{% url 'create_table7' %}" class="btn">Показатель KPI 7</a>
+        <h2>Научное руководство исследовательской лабораторией, Центром</h2>
+        <a href="{% url 'create_table8' %}" class="btn">Показатель KPI 8</a>
+        <h2>Оформленные охранные документы (патент)</h2>
+        <a href="{% url 'create_table9' %}" class="btn">Показатель KPI 9</a>
+        <h2 class="foot">Выгрузить данные в word</h2>
+        <a href="{% url 'export_data_to_word' %}" class="btn">Export Data to Word</a>
+    </div>
+</body>
+</html>

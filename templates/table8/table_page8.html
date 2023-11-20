@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (head content) ... -->
+    <link rel="stylesheet" href="{% static 'css/table_page.css' %}">
+</head>
+<body>
+    <h1>Научное руководство исследовательской лабораторией, Центром</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Решение Школы или руководства AlmaU (проректор/ректор) о научном руководстве лабораторией, Центром</th>
+                <th>Баллы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="{{ table.decision_of_the_AlmaU_School_or_management_on_the_scientific_management_of_the_laboratory_or_center.url }}" target="_blank">Скачать</a></td>
+                <td>{{ table.points }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'export_data_to_word2' %}" class="btn">Export Data to Word</a>
+    <a href="{% url 'kpi' %}" class="back">Назад</a>
+    <a class="btn btn-default" href="{% url 'edit_form8' pk=table.pk %}">Edit</a>
+    
+   
+</body>
+</html>

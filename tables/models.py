@@ -180,7 +180,7 @@ class KPI_4(models.Model):
         # Проверяем значение publication_choose и устанавливаем points соответственно
         if self.countries_choise == '1':
             self.points = '10'  # Здесь установите значение, которое соответствует выбору '1'
-        elif self.countries_choise == '2':
+        elif self.countries_choise == ' 2':
             self.points = '20'  # Здесь установите значение, которое соответствует выбору '2'
         super().save(*args, **kwargs)
 

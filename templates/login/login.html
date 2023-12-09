@@ -5,23 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
 </head>
-<body>
-  {% if error_message %}
-  <p class="error-message">{{ error_message }}</p>
-  {% endif %}
-  <form method="post">
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" required>
+<body class="bg-gradient-to-l from-red-500 to-blue-900">
+  <div class="container mx-auto px-4 h-full">  
+    <div class="flex content-center items-center justify-center h-full">
+      <img src="{% static 'AlmaU.svg' %}" alt="Your Image" class="w-1/2" style="z-index: 1;">
+      <div class="w-full lg:w-4/12 px-4">
+            
+          <form method="post">
+            {% csrf_token %}
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="username">Username:</label>
+              <input type="text" style="transition: all 0.15s ease 0s" class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="username" id="username" required>
+            </div>
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="password">Password:</label>
+              <input type="password" name="password" id="password" class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" required>
+            </div>
+            <div class="text-center mt-6">
+              <button
+                class="bg-blue-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
+                type="submit"
+                style="transition: all 0.15s ease 0s;" value="Log in"
+              >
+                Log In
+              </button>
+              {% if error_message %}
+              <p class="error-message">{{ error_message }}</p>
+              {% endif %}          
+          </form>          
+      </div>
     </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" required>
-    </div>
-    <input type="submit" value="Log in" class="btn">
-  </form>
+  </div>      
 </body>
 </html>
+
+

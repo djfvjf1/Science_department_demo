@@ -1,37 +1,114 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <header>
-        <h1>Показатели KPI</h1>
-        <a href="{% url 'home' %}" class="back">Назад</a>
-    </header>
-    <div class="all">
-        <h2>Публикации в рецензируемых журналах</h2>
-        <a href="{% url 'create_table' %}" class="btn">Показатель KPI 1</a>
-        <h2>Издание учебной, учебно-методической и научной литературы</h2>
-        <a href="{% url 'create_table2' %}" class="btn">Показатель KPI 2</a>
-        <h2>Выполнение научных исследований</h2>
-        <a href="{% url 'create_table3' %}" class="btn">Показатель KPI 3</a>
-        <h2>Очное (в том числе онлайн) участие в научных мероприятиях (конференции, форумы, саммиты) с докладом (в том числе с их публикацией) по приоритетным направлениям AlmaU и (или) их организация, проводимые в Казахстане и/или зарубежных странах </h2>
-        <a href="{% url 'create_table4' %}" class="btn">Показатель KPI 4</a>
-        <h2>Руководство докторскими диссертациями (PhD)</h2>
-        <a href="{% url 'create_table5' %}" class="btn">Показатель KPI 5</a>
-        <h2>Присвоение ученой степени докторантам AlmaU под руководством научного руководителя</h2>
-        <a href="{% url 'create_table6' %}" class="btn">Показатель KPI 6</a>
-        <h2>Получение в течение учебного года ученой степени/ученого звания/, званий в области искусства, спорта</h2>
-        <a href="{% url 'create_table7' %}" class="btn">Показатель KPI 7</a>
-        <h2>Научное руководство исследовательской лабораторией, Центром</h2>
-        <a href="{% url 'create_table8' %}" class="btn">Показатель KPI 8</a>
-        <h2>Оформленные охранные документы (патент)</h2>
-        <a href="{% url 'create_table9' %}" class="btn">Показатель KPI 9</a>
-        <h2 class="foot">Выгрузить данные в word</h2>
-        <a href="{% url 'export_data_to_word' %}" class="btn">Export Data to Word</a>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="{% static 'kpi.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="frame-parent">
+      <div class="kpi-almau-wrapper">
+        <div class="kpi-almau">Показатели KPI "AlmaU"</div>
+      </div>
+      <div class="frame">
+        <a href="{% url 'create_table' %}"><button class="button" id="kpi">
+          <div class="tx">
+            <div class="kpi-1">KPI 1</div>
+            <div class="div">Публикации в рецензируемых журналах</div>
+            <img class="icon" alt="" src="/static/icon.svg" />
+          </div>
+        </button></a>
+        <a href="{% url 'create_table2' %}"><button class="button1" id="kpi">
+          <div class="tx1">
+            <div class="kpi-2">KPI 2</div>
+            <div class="div1">
+              Издание учебной, учебно-методической и научной литературы
+            </div>
+            <img class="icon1" alt="" src="/static/icon.svg" />
+          </div>
+        </button></a>
+        <a href="{% url 'create_table3' %}"><button class="button2" id="kpi">
+          <div class="tx2">
+            <div class="kpi-3">KPI 3</div>
+            <div class="div2">Выполнение научных исследований</div>
+            <img class="icon2" alt="" src="/static/icon.svg" />
+          </div>
+        </button></a>
+      </div>
+      <div class="frame1">
+        <a href="{% url 'create_table4' %}"><button class="button3">
+          <div class="tx3">
+            <div class="kpi-4">KPI 4</div>
+            <div class="div3">
+              Очное (в том числе онлайн) участие в научных мероприятиях
+            </div>
+            <img class="icon3" alt="" src="/static/icon.svg" />
+          </div>
+        </button></a>
+        <a href="{% url 'create_table5' %}"><button class="button4">
+          <div class="tx4">
+            <div class="kpi-5">KPI 5</div>
+            <div class="phd">
+              <p class="p">Руководство докторскими диссертациями (PhD)</p>
+            </div>
+            <img class="icon4" alt="" src="/static/icon.svg" />
+          </div>
+        </button></a>
+        <a href="{% url 'create_table6' %}"><button class="button5">
+          <div class="tx5">
+            <div class="kpi-6">KPI 6</div>
+            <div class="almau">
+              Присвоение ученой степени докторантам AlmaU под руководством
+              научного руководителя
+            </div>
+            <img class="icon5" alt="" src="/static/icon.svg" />
+          </div>
+        </button></a>
+      </div>
+      <div class="frame2">
+        <div class="div4">
+          <a href="{% url 'create_table7' %}"><button class="child" ></button></a>
+          <div class="tx6">
+            <div class="kpi-7">KPI 7</div>
+            <div class="div5">
+              Получение в течение учебного года ученой степени/ученого звания/,
+              званий в области искусства, спорта
+            </div>
+            <img class="icon6" alt="" src="/static/icon.svg" />
+          </div>
+        </div>
+        <a href="{% url 'create_table8' %}"><button class="button6">
+          <div class="tx7">
+            <div class="kpi-6">KPI 8</div>
+            <div class="div6">
+              Научное руководство исследовательской лабораторией, Центром
+            </div>
+            <img class="icon7" alt="" src="/static/icon.svg" />
+          </div>
+        </button></a>
+        <a href="{% url 'create_table9' %}"><button class="button7" id="kpibut">
+          <div class="tx8">
+            <div class="kpi-9">KPI 9</div>
+            <div class="div7">
+              <p class="p">Оформленные охранные документы (патент)</p>
+            </div>
+            <img class="icon8" alt="" src="/static/icon.svg" />
+          </div>
+        </button></a>
+      </div>
+      <a href="{% url 'export_data_to_word' %}"><button class="frame3">
+        <div class="word-export">word export</div>
+      </button></a>
     </div>
-</body>
+  </body>
 </html>
